@@ -15,7 +15,7 @@ function moveZeros(nums){
     }
 }
 
-let nums=[0,1,0,3,12];
+let nums=[0,0,0,0,0];
 
 moveZeros(nums);
 console.log (nums);
