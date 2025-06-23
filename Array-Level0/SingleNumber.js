@@ -28,7 +28,7 @@ console.log(singleNumber(nums)); // Output: 4
 
 //Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.You must implement a solution with a linear runtime complexity and use only constant extra space.
 
-function singleNumber(nums) {
+function singleNumber(nums1) {
     let result = 0;
     for (let i = 0; i < nums.length; i++) {
         result ^= nums[i];
@@ -36,7 +36,7 @@ function singleNumber(nums) {
     return result;
 }
 
-let nums = [4, 1, 2, 1, 2];
+let nums1 = [4, 1, 2, 1, 2];
 console.log(singleNumber(nums)); // Output: 4   
 
 //time complexity: O(n)
