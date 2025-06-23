@@ -37,7 +37,7 @@ function singleNumber(nums1) {
 }
 
 let nums1 = [4, 1, 2, 1, 2];
-console.log(singleNumber(nums)); // Output: 4   
+console.log(singleNumber(nums1)); // Output: 4   
 
 //time complexity: O(n)
 //space complexity: O(1)
