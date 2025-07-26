@@ -87,3 +87,85 @@ const singleElementArray = [42];
 console.log("\nSingle element array:", singleElementArray);
 const sortedSingleElementArray = mergeSort(singleElementArray);
 console.log("Sorted single element array:", sortedSingleElementArray);
+
+// Sort an array
+// Given an array of integers nums, sort the array in ascending order and return it.
+
+// You must solve the problem without using any built-in functions in O(nlog(n)) time complexity and with the smallest space complexity possible.
+
+ 
+
+// Example 1:
+
+// Input: nums = [5,2,3,1]
+// Output: [1,2,3,5]
+// Explanation: After sorting the array, the positions of some numbers are not changed (for example, 2 and 3), while the positions of other numbers are changed (for example, 1 and 5).
+// Example 2:
+
+// Input: nums = [5,1,1,2,0,0]
+// Output: [0,0,1,1,2,5]
+// Explanation: Note that the values of nums are not necessarily unique.
+ 
+
+// Constraints:
+
+// 1 <= nums.length <= 5 * 104
+// -5 * 104 <= nums[i] <= 5 * 104
+
+function sortArray(nums) {
+    if (nums.length <= 1) {
+        return nums; // An array with 0 or 1 element is already sorted
+    }
+
+    // Find the middle point to divide the array into two halves
+    const mid = Math.floor(nums.length / 2);
+    const leftHalf = nums.slice(0, mid);
+    const rightHalf = nums.slice(mid);
+
+    // Recursively sort both halves
+    const sortedLeft = sortArray(leftHalf);
+    const sortedRight = sortArray(rightHalf);
+
+    // Merge the sorted halves
+    return merge(sortedLeft, sortedRight);
+}
+
+function merge(left, right) {
+    let result = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+
+    // Compare elements from both arrays and add the smaller one to the result
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            result.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            result.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+
+    // Add any remaining elements from the left array
+    while (leftIndex < left.length) {
+        result.push(left[leftIndex]);
+        leftIndex++;
+    }
+
+    // Add any remaining elements from the right array
+    while (rightIndex < right.length) {
+        result.push(right[rightIndex]);
+        rightIndex++;
+    }
+
+    return result;
+}
+
+// Example Usage:
+const nums1 = [5, 2, 3, 1];
+console.log(`Input: [${nums1}]`);
+console.log(`Output: [${sortArray(nums1)}]`); // Output: [1,2,3,5]
+
+const nums2 = [5, 1, 1, 2, 0, 0];
+console.log(`Input: [${nums2}]`);
+console.log(`Output: [${sortArray(nums2)}]`); // Output: [0,0,1,1,2,5]
